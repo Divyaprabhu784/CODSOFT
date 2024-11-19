@@ -21,7 +21,7 @@ public class BookRecommender {
     if (bookId == null) {
       System.out.println("Book not found.");
     } else {
-      recommendBooks(bookId, "model.tflite"); // Replace with your model path
+      recommendBooks(bookId, "model.tflite"); 
     }
     scanner.close();
   }
@@ -48,14 +48,14 @@ public class BookRecommender {
     // Load the TensorFlow Lite model
     Interpreter tflite = new Interpreter(ByteBuffer.wrap(Files.readAllBytes(Paths.get(modelPath))));
 
-    // Placeholder for model input and output data types (replace based on your model)
+    
     int[] inputShape = tflite.getInputTensorShape(0); // Assuming one input tensor
     int numInputs = inputShape[0]; // Get the number of input elements
     Object[] input = new Object[numInputs]; // Create an array to hold input data
     Object[] output = new Object[1]; // Assuming one output tensor
 
     // ... (code to prepare input data for the model, e.g., converting book titles to numerical IDs)
-    // This part needs to be implemented based on your model's input format
+   
 
     double[][] similarityMatrix = new double[bookTitles.size()][bookTitles.size()];
     for (int i = 0; i < bookTitles.size(); i++) {
